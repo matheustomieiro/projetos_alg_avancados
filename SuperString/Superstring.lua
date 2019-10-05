@@ -1,5 +1,3 @@
---OBS P/ JOAO: Em Lua, o vetor comeca em 1, entao onde o i comeca em 2, eh, na realidade, a segunda letra da string... (C/C++ str[1] onde em Lua str[2])
-
 c = ""
 
 --Funcao que encontra a sopreposicao de duas strings
@@ -7,17 +5,17 @@ function findOverlappingPair(a, b)
   max = math.mininteger
   n = math.min(string.len(a), string.len(b))
   
-  for i=2, (n+1) do
-    if (string.sub(a,-i) == string.sub(b,i-1)) then
-      if max < 2 then
+  for i=2, n do
+    if (string.sub(a,-(i-1)) == string.sub(b,i)) then
+      if max < i then
         max = i
-        c = a .. string.sub(b, i+1)
+        c = a .. string.sub(b, i)
       end
     end
   end
   
-  for i=2, (n+1) do
-    if (string.sub(a,1,i) == string.sub(b,-(i+1))) then
+  for i=2, n do
+    if (string.sub(a,i) == string.sub(b,-(i-1))) then
       if max < i then
         max = i
         c = b .. string.sub(a,i)
@@ -33,7 +31,6 @@ function findShortestSuperstring(list)
   while list_len ~= 1 do
     max = math.mininteger
     p = -1; q = -1
-    
     for i=1, (list_len) do
       for j = (i+1), (list_len) do
         max_len = findOverlappingPair(list[i],list[j])
