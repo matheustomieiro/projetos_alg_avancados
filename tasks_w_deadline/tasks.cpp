@@ -3,18 +3,19 @@
 
 using namespace std;
 
-
+// Struct que contém as informações de cada tarefa
 typedef struct {
     int deadline;
     int profit;
 }Task;
 
 
-
+// Função que tem a condição da ordenação, (ordena em função da variável deadline)
 bool sort_cond(Task i, Task j){
     return (i.deadline < j.deadline);
 }
 
+// Printa o vetor de tarefas
 void print_tasks(vector<Task> arr){
 
     int len = arr.size();
@@ -25,7 +26,8 @@ void print_tasks(vector<Task> arr){
 }
 
 
-
+// Função que maximiza lucro, ordenando tarefas em ordem de deadline, desse modo, 
+// a função verifica as que tem deadlines iguais e prioriza a que dá o maior lucro
 void max_profit(vector<Task> arr){
 
 
@@ -63,7 +65,7 @@ void max_profit(vector<Task> arr){
     print_tasks(chosen);
 }
 
-//Maximizar lucro, ordenando tarefas
+
 int main(){
 
 
