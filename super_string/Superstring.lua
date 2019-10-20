@@ -1,12 +1,18 @@
---Funcao que encontra a sopreposicao de duas strings
-function findOverlappingPair(a, b)
+--[[
+  Funcao que encontra a sopreposicao de duas strings
+  args: String a, String b
+  return: Integer Max(Maximo indice de sobreposicao), String c(String que contem a concatenacao das substrings) 
+]]--
+function encontraIndiceSobreposicao(a, b)
   local max = math.mininteger
   local n = math.min(string.len(a), string.len(b))
   local c = ""
   
+  --Rodando para n vezes e comparando o final da string a com o inicio da string b
   for i=2, (n+1) do
     print(string.sub(a,-(i-1)))
     if (string.sub(a,-(i-1)) == string.sub(b,i)) then
+      print("Entrou")
       if max < i then
         max = i
         c = a .. string.sub(b, i)
@@ -14,8 +20,10 @@ function findOverlappingPair(a, b)
     end
   end
   
+  --Rodando para n vezes e comparando o final da string b com o inicio da string a
   for i=2, (n+1) do
     if (string.sub(a,i) == string.sub(b,-(i-1))) then
+      print("Entrou")
       if max < i then
         max = i
         c = b .. string.sub(a,i)
@@ -26,17 +34,23 @@ function findOverlappingPair(a, b)
 end
 
 
-function findShortestSuperstring(list)
-  local list_len = #list
-  while list_len ~= 1 do
+--[[
+  Funcao que encontra uma superstring minima
+  args: Lista de Strings na qual se deseja operar
+  return: String que guarda a superstring minima
+]]--
+function encontraSuperStringMinima(lista)
+  local lista_tam = #lista
+  while lista_tam ~= 1 do
     max = math.mininteger
     local p = -1; local q = -1
     local final_str = ""
-    print("LISTA MT LOKA: " .. list[1])
-    for i=1, (list_len) do
-      for j = (i+1), (list_len) do
+    print("LISTA MT LOKA: " .. lista[1])
+    for i=1, (lista_tam) do
+      for j = (i+1), (lista_tam) do
         local c
-        max_len, c = findOverlappingPair(list[i],list[j])
+        max_len, c = encontraIndiceSobreposicao(lista[i],lista[j])
+        print(max)
         if max < max_len then
           max = max_len
           final_str = c
@@ -48,23 +62,27 @@ function findShortestSuperstring(list)
       
     end
   
-    list_len = list_len - 1
+    lista_tam = lista_tam - 1
   
     if max == math.mininteger then
-      list[1] = list[1] .. list[list_len]
+      lista[1] = lista[1] .. lista[lista_tam]
     else
-      list[p] = final_str
-      list[q] = list[list_len]
+      lista[p] = final_str
+      lista[q] = lista[lista_tam]
     end
     
   end
   
-  return list[1]
+  return lista[1]
   
 end
 
-function main()
-LIST = {"CATGC", "CTAAGT", "GCTA", "TTCA", "ATGCATC"}
-print(findShortestSuperstring(LIST))
+--[[
+  Funcao main, que inicia o programa
+]]--
+function main(args)
+LISTA = {"CATGC", "CTAAGT", "GCTA", "TTCA", "ATGCATC"}
+print(encontraSuperStringMinima(LISTA))
 end
+
 main()
