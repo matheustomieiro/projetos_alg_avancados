@@ -44,12 +44,14 @@ function encontraSuperStringMinima(lista)
     max = math.mininteger --Atribuindo a max um valor tao pequeno quanto possivel
     local x = -1; local y = -1
     local final_str = ""
+    print("LISTA MT LOKA: " .. lista[1])
     
     --Repeticao percorrendo todas as permutacoes da lista de strings
     for i=1, (lista_tam) do
       for j = (i+1), (lista_tam) do
         local max_indice, c
         max_indice, c = encontraIndiceSobreposicao(lista[i],lista[j]) -- max_indice recebe o primeiro retorno e c o segundo
+        print(max, c)
         if max < max_indice then -- Se max_indice for maior que o max atual
           max = max_indice --Atualiza max
           final_str = c
