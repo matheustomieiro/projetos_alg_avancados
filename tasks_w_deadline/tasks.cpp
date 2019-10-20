@@ -34,24 +34,31 @@ void max_profit(vector<Task> arr){
     vector<Task> chosen;
 
     Task best;
+    int time = 0;
 
     sort(arr.begin(),arr.end(),sort_cond);
 
     for(int i = 1; i <= arr.size(); i++){
 
+        time++;
+
         best.profit = 0;
+    
+        if(time == arr[i-1].deadline){
 
-        while(arr[i-1].deadline == arr[i].deadline){
-            
-            if(arr[i-1].profit < arr[i].profit && best.profit < arr[i].profit)
-                best = arr[i];
-            
+            while(arr[i-1].deadline == arr[i].deadline){
+                
+                if(arr[i-1].profit < arr[i].profit && best.profit < arr[i].profit)
+                    best = arr[i];
+                
 
-            else if(arr[i].profit < arr[i-1].profit && best.profit < arr[i-1].profit)
-                best = arr[i-1];
-        
-        
-            i++;
+                else if(arr[i].profit < arr[i-1].profit && best.profit < arr[i-1].profit)
+                    best = arr[i-1];
+            
+            
+                i++;
+
+            }
 
         }
 
@@ -60,6 +67,7 @@ void max_profit(vector<Task> arr){
         else
             chosen.push_back(arr[i-1]);
 
+        
     }
 
     print_tasks(chosen);
