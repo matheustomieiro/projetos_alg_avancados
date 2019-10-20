@@ -28,13 +28,13 @@ void print_tasks(vector<Task> arr){
 
 // Função que maximiza lucro, ordenando tarefas em ordem de deadline, desse modo, 
 // a função verifica as que tem deadlines iguais e prioriza a que dá o maior lucro
-void max_profit(vector<Task> arr){
+int max_profit(vector<Task> arr){
 
 
     vector<Task> chosen;
 
     Task best;
-    int time = 0;
+    int time = 0, total = 0;
 
     sort(arr.begin(),arr.end(),sort_cond);
 
@@ -62,15 +62,19 @@ void max_profit(vector<Task> arr){
 
         }
 
-        if(best.profit != 0)
+        if(best.profit != 0){
             chosen.push_back(best);
-        else
+            total += best.profit;
+        }
+        else{
             chosen.push_back(arr[i-1]);
-
+            total+= arr[i-1].profit;
+        }
         
     }
 
     print_tasks(chosen);
+    return total;
 }
 
 
@@ -78,7 +82,7 @@ int main(){
 
 
     int N;
-
+    int total;
     vector<Task> tasks;
 
     cin >> N;
@@ -99,7 +103,9 @@ int main(){
 
     }
 
-    max_profit(tasks);
+    total = max_profit(tasks);
+
+    cout << endl << "O lucro total foi " << total << endl; 
 
     return 0;
 }
