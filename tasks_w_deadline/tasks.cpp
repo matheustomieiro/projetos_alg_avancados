@@ -72,7 +72,8 @@ int max_profit(vector<Task> arr){
         }
         
     }
-
+    cout << endl;
+    cout << "Tarefas escolhidas: " << endl;
     print_tasks(chosen);
     return total;
 }
