@@ -79,9 +79,13 @@ end
 --[[
   Funcao main, que inicia o programa
 ]]--
-function main(args)
-LISTA = {"CATGC", "CTAAGT", "GCTA", "TTCA", "ATGCATC"}
-print(encontraSuperStringMinima(LISTA))
+function main()
+  if(arg[1] ~= nil) then
+    LISTA = args
+    print(encontraSuperStringMinima(LISTA))
+  else
+    print("SEM ARGUMENTOS VALIDOS NA CHAMADA!")
+  end
 end
 
 main()
