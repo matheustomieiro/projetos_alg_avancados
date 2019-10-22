@@ -4,13 +4,13 @@
   return: Integer Max(Maximo indice de sobreposicao), String c(String que contem a concatenacao das substrings) 
 ]]--
 function encontraIndiceSobreposicao(a, b)
-  local max = math.mininteger --Atribuindo a max um valor tao pequeno quanto possivel
+  local max = 0 --Atribuindo a max um valor tao pequeno quanto possivel
   local n = math.min(string.len(a), string.len(b)) --Encontrando o menor valor entre os tamanhos de a e b
   local c = "" --Declarando uma variavel c que guarda uma substring
   
   --Rodando para n vezes e comparando o final da string a com o inicio da string b
   for i=2, (n+1) do
-    if ( (string.sub(a,-(i-1)) == string.sub(b, 0, i-1)) and (string.sub(b, 0, i-1) ~= nil) ) then --Procuramos uma substring igual a outra
+    if ( (string.sub(a,-(i-1)) == string.sub(b, 1, i-2)) and (string.sub(b, 1, i-1) ~= nil) ) then --Procuramos uma substring igual a outra
       if max < i then -- Se o indice for maior que o max anterior
         max = i -- Atualizamos max
         c = a .. string.sub(b, i) -- String c recebe a concatenacao de a com substring 0 a i de b
@@ -20,7 +20,7 @@ function encontraIndiceSobreposicao(a, b)
   
   --Rodando para n vezes e comparando o final da string b com o inicio da string a
   for i=2, (n+1) do
-    if ( (string.sub(a, 0, i-1) == string.sub(b,-(i-1))) and (string.sub(a, 0, i-1) ~= nil) ) then --Procuramos uma substring igual a outra
+    if ( (string.sub(a, 1, i-1) == string.sub(b,-(i-1))) and (string.sub(a, 1, i-1) ~= nil) ) then --Procuramos uma substring igual a outra
       if max < i then -- Se o indice for maior que o max anterior
         max = i -- Atualizamos max
         c = b .. string.sub(a,i) -- String c recebe a concatenacao de b com substring 0 até i de a
@@ -40,7 +40,7 @@ function encontraSuperStringMinima(lista)
   local lista_tam = #lista --Salvando tamanho inicial da lista
   --Repete ate que haja somente o proprio elemento superstring minima na lista
   while lista_tam ~= 1 do
-    max = math.mininteger --Atribuindo a max um valor tao pequeno quanto possivel
+    max = 0 --Atribuindo a max um valor tao pequeno quanto possivel
     local x = -1; local y = -1
     local final_str = ""
     
@@ -60,13 +60,12 @@ function encontraSuperStringMinima(lista)
   
     lista_tam = lista_tam - 1 --Diminuimos os termos a serem vistos pelo for acima
     
-    if max == math.mininteger then --Se max nao foi atualizado ainda
+    if max == 0 then --Se max nao foi atualizado ainda
       lista[1] = lista[1] .. lista[lista_tam] --A string resultado sera a concatenacao dela mesma com a penultima posicao
     else --Caso contrario
       lista[x] = final_str -- A string da lista no indice salvo em X recebera a string final
       lista[y] = lista[lista_tam] --A string da lista no indice salvo em Y recebera a penultima string da lista atual
     end
-    print(lista[1], max)
   end
   
   return lista[1] -- Retornamos o primeiro termo, que foi usado como auxiliar
@@ -78,11 +77,9 @@ end
 ]]--
 function main()
   if(arg[1] ~= nil) then
-    LISTA = args
+    LISTA = arg
     print(encontraSuperStringMinima(LISTA))
   else
-    LISTA = { "CATGC", "CTAAGT", "GCTA", "TTCA", "ATGCATC" };
-    print(encontraSuperStringMinima(LISTA))
     print("SEM ARGUMENTOS VALIDOS NA CHAMADA!")
   end
 end
