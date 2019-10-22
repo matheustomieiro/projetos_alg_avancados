@@ -1,5 +1,5 @@
 lua:
-	sudo apt install lua5.3
+	sudo apt install lua5.2
 
-run:
-	lua Superstring.lua
+run: $(args)
+	lua Superstring.lua args
