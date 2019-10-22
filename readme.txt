@@ -15,12 +15,11 @@ Instruções de compilacao/execucao
 	Primeiramente é necessário ter o intepretador Lua instalado.
 	SE USAR O MAKEFILE(o comando "make lua" só funcionará em Linux derivados do Debian):
 	Basta usar: "make lua" -> instala o binario de Lua usando o apt
-				"make run" -> roda o script em Lua
 
 	Caso não queira usar Makefile, o interpretador de Lua também pode ser obtido através do link:
 		https://sourceforge.net/projects/luabinaries/files/5.3.5/
-	Ou ainda, se nos derivados de Debian: apt install lua5.3;		No Mac: brew install lua5.3
+	Ou ainda, se nos derivados de Debian: apt install lua5.2;		No Mac: brew install lua5.2
 	Pesa em torno de 400Kb.
 	
-	Para executar, basta entrar no diretorio super_string e executar o comando "lua Supertring.lua"
+	Para executar, basta entrar no diretorio super_string e executar o comando "lua Supertring.lua 'STRINGS SEPARADAS POR ESPACOS' "
 	
