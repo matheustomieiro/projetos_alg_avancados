@@ -2,6 +2,6 @@
 
 **Integrantes:**
 
-__Matheus Tomieiro de Oliveira__
+_Matheus Tomieiro de Oliveira_
 
-__Victor Vieira Custodio Reis__
+_Victor Vieira Custodio Reis_
