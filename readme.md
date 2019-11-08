@@ -1,4 +1,4 @@
-#Projetos destinados à disciplina de Algoritmos Avancados
+#Projetos destinados à disciplina de Algoritmos Avancados - T1 e T2
 
 **Integrantes:**
 
