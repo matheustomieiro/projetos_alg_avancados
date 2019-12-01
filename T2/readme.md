@@ -6,4 +6,4 @@ Problema dos degraus(Escrito em C++):
 	
 	Para rodar use: make run
 	
-	Para limpar use: make clear
+	Para limpar use: make clean
