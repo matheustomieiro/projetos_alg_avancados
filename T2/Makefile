@@ -1,5 +1,5 @@
 all: Main Matriz
-	g++ -o bin/Main temp/Matriz.o temp/Main.o
+	g++ -o bin/Main.x temp/Matriz.o temp/Main.o
 
 Main:
 	g++ -c src/Main.cpp
@@ -13,5 +13,6 @@ run:
 	bin/./Main
 
 clean:
-	@rm temp/*
+	@rm temp/*.o
+	@rm bin/*.x
 	@echo "Cleaned!"
