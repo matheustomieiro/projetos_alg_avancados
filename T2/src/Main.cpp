@@ -16,10 +16,6 @@ int **MEMO;
 int INF = __INT_MAX__;
 int N, Count = 0;
 
-int max_com_restricoes(){
-
-}
-
 int degraus(int degrau_atual, int degraus_restantes){
     if(degraus_restantes<0) return -INF;
     if(degrau_atual == N) return 0;
