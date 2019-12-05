@@ -1,3 +1,5 @@
+//A DOCUMENTACAO DESTE MODULO SE ENCONTRA NO .h NO DIRETORIO lib/
+
 #include "../lib/Matriz.h"
 #include <stdio.h>
 #include <stdlib.h>

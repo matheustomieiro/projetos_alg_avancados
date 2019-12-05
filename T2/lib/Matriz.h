@@ -1,4 +1,4 @@
-//Header para manipular matrizes na heap
+//Modulo para manipulacao de matrizes na heap
 
 /*
 Funcao que aloca uma matriz NxN na heap
