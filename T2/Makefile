@@ -10,7 +10,7 @@ Matriz:
 	@mv Matriz.o temp/Matriz.o
 
 run:
-	bin/./Main
+	bin/./Main.x
 
 clean:
 	@rm temp/*.o
